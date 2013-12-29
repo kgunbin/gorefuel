@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ListPreference
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:key="au.kgunbin.gorefuel.FUEL_TYPE"
+        android:defaultValue="@string/fuel_types_default"
+        android:dialogTitle="@string/fuel_type_dialog"
+        android:entries="@array/fuel_types"
+        android:entryValues="@array/fuel_types_values"
+        android:title="@string/fuel_type_title" 
+        android:summary="%s"/>
+
+</PreferenceScreen>
