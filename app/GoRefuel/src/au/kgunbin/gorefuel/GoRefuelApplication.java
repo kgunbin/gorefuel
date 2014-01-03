@@ -10,6 +10,7 @@ import java.util.Set;
 import android.app.Application;
 import android.location.Location;
 import au.kgunbin.gorefuel.domain.Shop;
+import au.kgunbin.gorefuel.util.Preferences;
 import au.kgunbin.gorefuel.util.Shops;
 
 public class GoRefuelApplication extends Application {
@@ -18,6 +19,7 @@ public class GoRefuelApplication extends Application {
 	private Location location;
 	private final Set<String> favorites = new HashSet<String>();
 	private List<Float> priceRange;
+	private boolean networkError = false;
 
 	private static GoRefuelApplication instance;
 
@@ -25,6 +27,7 @@ public class GoRefuelApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		instance = this;
+		Preferences.init(instance);
 	}
 
 	public static boolean isListSet() {
@@ -36,11 +39,13 @@ public class GoRefuelApplication extends Application {
 	}
 
 	public static void storeData(List<Shop> list) {
-		instance.shops = list;
+		instance.shops = list == null ? Collections.<Shop> emptyList()
+				: new ArrayList<Shop>(list);
 	}
 
 	public static void reset() {
 		instance.shops.clear();
+		instance.networkError = false;
 	}
 
 	public static void setLocation(final Location loc) {
@@ -75,14 +80,12 @@ public class GoRefuelApplication extends Application {
 	}
 
 	public static Set<String> getFavorites() {
-		instance.favorites.clear();
 		for (Shop s : Shops.favorites(getData()))
 			instance.favorites.add(s.getTradingName());
 		return instance.favorites;
 	}
 
 	public static void setFavorites(final Set<String> fav) {
-		instance.favorites.clear();
 		instance.favorites.addAll(fav);
 	}
 
@@ -108,5 +111,13 @@ public class GoRefuelApplication extends Application {
 		for (double price = cheap; price < expensive; price += step) {
 			priceRange.add((float) (price + step));
 		}
+	}
+
+	public static void setNetworkError() {
+		instance.networkError = true;
+	}
+
+	public static boolean isNetworkError() {
+		return instance.networkError;
 	}
 }

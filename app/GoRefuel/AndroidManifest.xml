@@ -25,14 +25,11 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo" >
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />        
         <activity
             android:name="au.kgunbin.gorefuel.ResultListActivity"
             android:label="@string/title_activity_display_message"
             android:uiOptions="splitActionBarWhenNarrow" >
-            <intent-filter>
+            <intent-filter android:label="@string/app_name">
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -41,17 +38,16 @@
         <activity
             android:name="au.kgunbin.gorefuel.MapActivity"
             android:label="@string/title_activity_map"
-            android:parentActivityName="au.kgunbin.gorefuel.ResultListActivity" >
-        </activity>
+            android:parentActivityName="au.kgunbin.gorefuel.ResultListActivity" />
+        <activity
+            android:name="au.kgunbin.gorefuel.SettingsActivity"
+            android:label="@string/title_activity_settings" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAloQwhmIM5G53TyhUq_un21UQHhne5eRU" />
-
-        <activity
-            android:name="au.kgunbin.gorefuel.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
-
 </manifest>

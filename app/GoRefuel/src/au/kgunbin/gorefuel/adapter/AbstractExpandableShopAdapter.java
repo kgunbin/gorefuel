@@ -96,7 +96,7 @@ public abstract class AbstractExpandableShopAdapter extends
 
 	@Override
 	public void onGroupExpanded(int groupPosition) {
-		nowVisible.addAll(shops.get(groupPosition));		
+		nowVisible.addAll(shops.get(groupPosition));
 	}
 
 	@Override
@@ -127,7 +127,8 @@ public abstract class AbstractExpandableShopAdapter extends
 		if (getChildrenCount(groupPosition) > 0) {
 			Shop shop = (Shop) getChild(groupPosition, 0);
 			vc.information.setText(getInformation(shop));
-		}
+		} else
+			vc.information.setText("");
 
 		return convertView;
 	}

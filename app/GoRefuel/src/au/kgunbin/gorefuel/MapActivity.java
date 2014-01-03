@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import au.kgunbin.gorefuel.domain.Shop;
 import au.kgunbin.gorefuel.navigation.Navigator;
@@ -42,10 +43,7 @@ public class MapActivity extends Activity {
 		GoogleMap map = frag.getMap();
 
 		if (map != null) {
-			map.addMarker(new MarkerOptions().icon(
-					BitmapDescriptorFactory
-							.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-					.position(coords));
+			map.setMyLocationEnabled(true);
 
 			for (int i = 0; i < shops.size(); i++) {
 				Shop s = shops.get(i);
@@ -73,20 +71,22 @@ public class MapActivity extends Activity {
 
 				private final View view = getLayoutInflater().inflate(
 						R.layout.view_mapmarker, null);
+				private final TextView txtTitle = ((TextView) view
+						.findViewById(R.id.txtInfoWindowTitle));
+				private final ImageView img = ((ImageView) view
+						.findViewById(R.id.ivInfoWindowMain));
+
+				private final TextView txtPrice = ((TextView) view
+						.findViewById(R.id.txtInfoWindowPrice));
 
 				@Override
 				public View getInfoContents(Marker marker) {
-
-					String title = marker.getTitle();
-
-					TextView txtTitle = ((TextView) view
-							.findViewById(R.id.txtInfoWindowTitle));
-
-					if (title != null) {
-						txtTitle.setText(title);
-					} else {
-						txtTitle.setText("");
-					}
+					Shop shop = events.get(marker);
+					txtPrice.setText(String.format(
+							getResources().getString(R.string.price),
+							shop.getPrice()));
+					txtTitle.setText(shop.getTradingName());
+					img.setImageResource(shop.getBrand().getDrawable());
 					return view;
 				}
 

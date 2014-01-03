@@ -50,11 +50,11 @@ public class ExecutableFragment extends Fragment {
 
 		tasks.add(AbstractSynchronizedAsyncTask.getTask(getActivity(),
 				AsyncLocationDetectTask.class,
-				new AsyncTaskCompletionListener<Location>() {
+				new AbstractAsyncTaskCompletionListener<Location>() {
 					@Override
 					public void onComplete(Location result) {
 						GoRefuelApplication.setLocation(result);
-						onTaskComplete();
+						super.onComplete(result);
 					}
 				}));
 
@@ -66,11 +66,17 @@ public class ExecutableFragment extends Fragment {
 
 			tasks.add(AbstractSynchronizedAsyncTask.getTask(getActivity(),
 					AsyncRSSDownloadTask.class,
-					new AsyncTaskCompletionListener<List<Shop>>() {
+					new AbstractAsyncTaskCompletionListener<List<Shop>>() {
 						@Override
 						public void onComplete(List<Shop> result) {
 							GoRefuelApplication.storeData(result);
-							onTaskComplete();
+							super.onComplete(result);
+						}
+
+						@Override
+						public void onError(Exception exception) {
+							GoRefuelApplication.setNetworkError();
+							super.onError(exception);
 						}
 					}));
 		}
@@ -85,6 +91,21 @@ public class ExecutableFragment extends Fragment {
 	}
 
 	private void onAllTasksComplete() {
-		completionListener.onPostExecute();
+		if (completionListener != null)
+			completionListener.onPostExecute();
+	}
+
+	abstract class AbstractAsyncTaskCompletionListener<A> implements
+			AsyncTaskCompletionListener<A> {
+
+		@Override
+		public void onComplete(A result) {
+			onTaskComplete();
+		}
+
+		@Override
+		public void onError(Exception exception) {
+			onTaskComplete();
+		}
 	}
 }

@@ -45,6 +45,6 @@ public final class Shops {
 	}
 
 	public static double effective(final Shop shop) {
-		return (30.0 + Math.max(shop.getDistance(), 3f) / 15.0) * shop.getPrice();
+		return (30.0 + Math.max(shop.getDistance(), 5f) / 15.0) * shop.getPrice();
 	}
 }

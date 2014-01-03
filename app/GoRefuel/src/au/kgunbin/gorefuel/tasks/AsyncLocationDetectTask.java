@@ -10,7 +10,8 @@ public class AsyncLocationDetectTask extends
 	private Location location = null;
 
 	@Override
-	protected Location doInBackgroundInternal(String... arg0) {		
+	protected Location doInBackgroundInternal(String... arg0)
+			throws AbstractSynchronizedAsyncTask.CompletionException {
 		LocationManager manager = (LocationManager) getContext()
 				.getSystemService(Context.LOCATION_SERVICE);
 		location = manager

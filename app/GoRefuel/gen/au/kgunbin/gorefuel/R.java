@@ -215,54 +215,54 @@ containing a value of this type.
         public static final int ic_action_important=0x7f02001c;
         public static final int ic_action_map=0x7f02001d;
         public static final int ic_action_place=0x7f02001e;
-        public static final int ic_action_search=0x7f02001f;
-        public static final int ic_action_settings=0x7f020020;
-        public static final int ic_ampol=0x7f020021;
-        public static final int ic_betterchoice=0x7f020022;
-        public static final int ic_boc=0x7f020023;
-        public static final int ic_bp=0x7f020024;
-        public static final int ic_caltex=0x7f020025;
-        public static final int ic_coles_express=0x7f020026;
-        public static final int ic_gull=0x7f020027;
-        public static final int ic_kleenheat=0x7f020028;
-        public static final int ic_launcher=0x7f020029;
-        public static final int ic_liberty=0x7f02002a;
-        public static final int ic_other=0x7f02002b;
-        public static final int ic_plusone_medium_off_client=0x7f02002c;
-        public static final int ic_plusone_small_off_client=0x7f02002d;
-        public static final int ic_plusone_standard_off_client=0x7f02002e;
-        public static final int ic_plusone_tall_off_client=0x7f02002f;
-        public static final int ic_shell=0x7f020030;
-        public static final int ic_united=0x7f020031;
+        public static final int ic_action_refresh=0x7f02001f;
+        public static final int ic_action_search=0x7f020020;
+        public static final int ic_action_settings=0x7f020021;
+        public static final int ic_ampol=0x7f020022;
+        public static final int ic_betterchoice=0x7f020023;
+        public static final int ic_boc=0x7f020024;
+        public static final int ic_bp=0x7f020025;
+        public static final int ic_caltex=0x7f020026;
+        public static final int ic_coles_express=0x7f020027;
+        public static final int ic_gull=0x7f020028;
+        public static final int ic_kleenheat=0x7f020029;
+        public static final int ic_launcher=0x7f02002a;
+        public static final int ic_liberty=0x7f02002b;
+        public static final int ic_other=0x7f02002c;
+        public static final int ic_plusone_medium_off_client=0x7f02002d;
+        public static final int ic_plusone_small_off_client=0x7f02002e;
+        public static final int ic_plusone_standard_off_client=0x7f02002f;
+        public static final int ic_plusone_tall_off_client=0x7f020030;
+        public static final int ic_shell=0x7f020031;
+        public static final int ic_united=0x7f020032;
     }
     public static final class id {
-        public static final int action_map=0x7f06001a;
-        public static final int action_search=0x7f060019;
-        public static final int action_settings=0x7f06001b;
-        public static final int distanceBoundary=0x7f06000d;
-        public static final int favShop=0x7f060010;
+        public static final int action_map=0x7f060019;
+        public static final int action_settings=0x7f06001a;
+        public static final int distanceBoundary=0x7f06000e;
+        public static final int favShop=0x7f060011;
         public static final int foundNothing=0x7f060006;
-        public static final int fragment_about=0x7f06000b;
-        public static final int fragment_fuel_pref=0x7f060009;
-        public static final int fragment_location_pref=0x7f06000a;
+        public static final int fragment_about=0x7f06000c;
+        public static final int fragment_fuel_pref=0x7f06000a;
+        public static final int fragment_location_pref=0x7f06000b;
         public static final int hybrid=0x7f060004;
-        public static final int icon=0x7f06000f;
-        public static final int information=0x7f06000e;
-        public static final int ivInfoWindowMain=0x7f060016;
-        public static final int mainSelection=0x7f06000c;
-        public static final int map=0x7f060007;
+        public static final int icon=0x7f060010;
+        public static final int information=0x7f06000f;
+        public static final int ivInfoWindowMain=0x7f060015;
+        public static final int mainSelection=0x7f06000d;
+        public static final int map=0x7f060008;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int progressBar1=0x7f060005;
+        public static final int retry=0x7f060007;
         public static final int satellite=0x7f060002;
-        public static final int shopAddress=0x7f060013;
-        public static final int shopListView=0x7f060008;
-        public static final int shopPrice=0x7f060011;
-        public static final int shopTradeName=0x7f060012;
-        public static final int tabIcon=0x7f060014;
-        public static final int tabText=0x7f060015;
+        public static final int shopAddress=0x7f060014;
+        public static final int shopListView=0x7f060009;
+        public static final int shopPrice=0x7f060012;
+        public static final int shopTradeName=0x7f060013;
         public static final int terrain=0x7f060003;
         public static final int txtInfoWindowDetails=0x7f060018;
+        public static final int txtInfoWindowPrice=0x7f060016;
         public static final int txtInfoWindowTitle=0x7f060017;
     }
     public static final class integer {
@@ -277,9 +277,8 @@ containing a value of this type.
         public static final int mainitem=0x7f030005;
         public static final int shopgroupitem=0x7f030006;
         public static final int shopitem=0x7f030007;
-        public static final int tab_header=0x7f030008;
-        public static final int view_mapmarker=0x7f030009;
-        public static final int view_nothing=0x7f03000a;
+        public static final int view_mapmarker=0x7f030008;
+        public static final int view_nothing=0x7f030009;
     }
     public static final class menu {
         public static final int actionbar=0x7f0c0000;
@@ -287,7 +286,7 @@ containing a value of this type.
         public static final int settings=0x7f0c0002;
     }
     public static final class string {
-        public static final int about_dialog=0x7f070035;
+        public static final int about_dialog=0x7f070036;
         public static final int action_search=0x7f07001f;
         public static final int action_settings=0x7f07001e;
         public static final int address=0x7f07002b;
@@ -387,7 +386,8 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f070013;
-        public static final int copyright=0x7f070034;
+        public static final int copyright=0x7f070035;
+        public static final int error_network=0x7f070034;
         public static final int fuel_type_dialog=0x7f07002d;
         public static final int fuel_type_title=0x7f07002e;
         public static final int fuel_types_default=0x7f07002c;
@@ -409,16 +409,19 @@ containing a value of this type.
         public static final int title_activity_display_message=0x7f070020;
         public static final int title_activity_map=0x7f070021;
         public static final int title_activity_settings=0x7f070022;
+        public static final int try_again=0x7f070037;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces

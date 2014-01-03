@@ -8,6 +8,7 @@ public abstract class AbstractSynchronizedAsyncTask<O> extends
 
 	private AsyncTaskCompletionListener<O> listener;
 	private Context context;
+	private Exception occured = null;
 
 	public final static <O, T extends AbstractSynchronizedAsyncTask<O>> T getTask(
 			final Context c, final Class<T> clazz,
@@ -33,16 +34,32 @@ public abstract class AbstractSynchronizedAsyncTask<O> extends
 		return context;
 	}
 
-	protected abstract O doInBackgroundInternal(String... params);
+	protected abstract O doInBackgroundInternal(String... params)
+			throws CompletionException;
 
 	@Override
 	public final O doInBackground(String... params) {
-		O res = doInBackgroundInternal(params);
-		return res;
+		try {
+			return doInBackgroundInternal(params);
+		} catch (CompletionException e) {
+			occured = e;
+		}
+		return null;
 	};
 
 	@Override
 	protected final void onPostExecute(O result) {
-		listener.onComplete(result);
+		if (occured != null)
+			listener.onError(occured);
+		else
+			listener.onComplete(result);
+	}
+
+	static class CompletionException extends Exception {
+		public CompletionException(Exception e) {
+			super(e);
+		}
+
+		private static final long serialVersionUID = -6642525744877459690L;
 	}
 }

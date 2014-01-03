@@ -18,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import au.kgunbin.gorefuel.domain.Shop;
 import au.kgunbin.gorefuel.fragments.CheapestFragment;
@@ -28,6 +27,7 @@ import au.kgunbin.gorefuel.fragments.ExecutableFragment;
 import au.kgunbin.gorefuel.fragments.RecommendedFragment;
 import au.kgunbin.gorefuel.fragments.ResultFragmentListener;
 import au.kgunbin.gorefuel.util.Constants;
+import au.kgunbin.gorefuel.util.Preferences;
 
 public class ResultListActivity extends Activity implements
 		AsyncFragmentListener {
@@ -57,10 +57,9 @@ public class ResultListActivity extends Activity implements
 
 		PreferenceManager.setDefaultValues(this, R.xml.pref_fueltype, false);
 		PreferenceManager.setDefaultValues(this, R.xml.pref_region, false);
-		PreferenceManager.getDefaultSharedPreferences(this)
-				.registerOnSharedPreferenceChangeListener(prefListener);
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		prefs.registerOnSharedPreferenceChangeListener(prefListener);
 
 		GoRefuelApplication.setFavorites(prefs.getStringSet(
 				Constants.FAVORITES, Collections.<String> emptySet()));
@@ -71,35 +70,27 @@ public class ResultListActivity extends Activity implements
 
 		actionBar.addTab(actionBar
 				.newTab()
-				.setCustomView(
-						getTabHeaderView(R.string.tab_recommended,
-								R.drawable.ic_action_good))
+				.setIcon(R.drawable.ic_action_good)
 				.setTabListener(
 						new TabListener<RecommendedFragment>(
 								RecommendedFragment.class)));
 		actionBar.addTab(actionBar
 				.newTab()
-				.setCustomView(
-						getTabHeaderView(R.string.tab_favorites,
-								R.drawable.ic_action_important))
+				.setIcon(R.drawable.ic_action_important)
 				.setTabListener(
 						new TabListener<FavoritesFragment>(
 								FavoritesFragment.class)));
 		actionBar
 				.addTab(actionBar
 						.newTab()
-						.setCustomView(
-								getTabHeaderView(R.string.tab_nearest,
-										R.drawable.ic_action_place))
+						.setIcon(R.drawable.ic_action_place)
 						.setTabListener(
 								new TabListener<NearestFragment>(
 										NearestFragment.class)));
 
 		actionBar.addTab(actionBar
 				.newTab()
-				.setCustomView(
-								getTabHeaderView(R.string.tab_cheapest,
-										R.drawable.ic_action_dollar_sign))
+				.setIcon(R.drawable.ic_action_dollar_sign)
 				.setTabListener(
 						new TabListener<CheapestFragment>(
 								CheapestFragment.class)));
@@ -117,13 +108,6 @@ public class ResultListActivity extends Activity implements
 			getFragmentManager().beginTransaction()
 					.add(executableFragment, EXEC_TAG).commit();
 		}
-	}
-
-	private View getTabHeaderView(final int text, final int drawable) {
-		View v = getLayoutInflater().inflate(R.layout.tab_header, null);
-		((ImageView) (v.findViewById(R.id.tabIcon))).setImageResource(drawable);
-		((TextView) (v.findViewById(R.id.tabText))).setText(text);
-		return v;
 	}
 
 	@Override
@@ -159,34 +143,68 @@ public class ResultListActivity extends Activity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
+
+		setTitle(String.format(
+				getResources().getString(
+						R.string.title_activity_display_message),
+				Preferences.getLabel(Constants.FUEL_TYPE),
+				Preferences.getLabel(Constants.REGION)));
+
 		if (!GoRefuelApplication.isListSet()) {
 			getFragmentManager().beginTransaction()
 					.replace(android.R.id.content, defaultFragment).commit();
 			if (findViewById(R.id.progressBar1) != null)
 				findViewById(R.id.progressBar1).setVisibility(View.VISIBLE);
+			if (findViewById(R.id.retry) != null)
+				findViewById(R.id.retry).setVisibility(View.GONE);
+			if (findViewById(R.id.foundNothing) != null)
+				findViewById(R.id.foundNothing).setVisibility(View.GONE);
 			executableFragment.requestData();
 		}
 	}
 
 	@Override
 	protected void onStop() {
-		SharedPreferences.Editor editor = prefs.edit();
-		editor.putStringSet(Constants.FAVORITES,
-				GoRefuelApplication.getFavorites());
-		editor.commit();
+		prefs.edit()
+			  .putStringSet(Constants.FAVORITES,
+						GoRefuelApplication.getFavorites())
+			  .commit();
 		super.onStop();
 	}
 
 	@Override
 	public void onPostExecute() {
+		TextView foundNothing = (TextView) findViewById(R.id.foundNothing);
+		View retry = findViewById(R.id.retry);
+		View progressBar = findViewById(R.id.progressBar1);
+
 		if (GoRefuelApplication.isListSet()) {
 			GoRefuelApplication.calculate();
 			getActionBar().getSelectedTab().select();
-		} else if (findViewById(R.id.foundNothing) != null)
-			findViewById(R.id.foundNothing).setVisibility(View.VISIBLE);
+		} else if (GoRefuelApplication.isNetworkError()) {
+			if (foundNothing != null) {
+				foundNothing.setText(R.string.error_network);
+				foundNothing.setVisibility(View.VISIBLE);
+			}
+			if (retry != null)
+				retry.setVisibility(View.VISIBLE);
 
-		if (findViewById(R.id.progressBar1) != null)
-			findViewById(R.id.progressBar1).setVisibility(View.GONE);
+		} else {
+			if (foundNothing != null) {
+				foundNothing.setText(R.string.nothing);
+				foundNothing.setVisibility(View.VISIBLE);
+			}
+			if (retry != null)
+				retry.setVisibility(View.GONE);
+		}
+
+		if (progressBar != null)
+			progressBar.setVisibility(View.GONE);
+	}
+
+	public final void onRetry(final View view) {
+		GoRefuelApplication.reset();
+		recreate();
 	}
 
 	private class TabListener<T extends Fragment> implements
