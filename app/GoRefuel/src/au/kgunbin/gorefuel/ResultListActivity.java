@@ -18,6 +18,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import au.kgunbin.gorefuel.domain.Shop;
 import au.kgunbin.gorefuel.fragments.CheapestFragment;
 import au.kgunbin.gorefuel.fragments.FavoritesFragment;
@@ -35,7 +37,7 @@ public class ResultListActivity extends Activity implements
 
 	private SharedPreferences prefs;
 	private ExecutableFragment executableFragment;
-	
+
 	private final Fragment defaultFragment = new DefaultFragment();
 	private ResultFragmentListener actualFragment = (ResultFragmentListener) defaultFragment;
 
@@ -69,27 +71,35 @@ public class ResultListActivity extends Activity implements
 
 		actionBar.addTab(actionBar
 				.newTab()
-				.setText(R.string.tab_recommended)
+				.setCustomView(
+						getTabHeaderView(R.string.tab_recommended,
+								R.drawable.ic_action_good))
 				.setTabListener(
 						new TabListener<RecommendedFragment>(
 								RecommendedFragment.class)));
 		actionBar.addTab(actionBar
 				.newTab()
-				.setText(R.string.tab_favorites)
+				.setCustomView(
+						getTabHeaderView(R.string.tab_favorites,
+								R.drawable.ic_action_important))
 				.setTabListener(
 						new TabListener<FavoritesFragment>(
 								FavoritesFragment.class)));
 		actionBar
 				.addTab(actionBar
 						.newTab()
-						.setText(R.string.tab_nearest)
+						.setCustomView(
+								getTabHeaderView(R.string.tab_nearest,
+										R.drawable.ic_action_place))
 						.setTabListener(
 								new TabListener<NearestFragment>(
 										NearestFragment.class)));
 
 		actionBar.addTab(actionBar
 				.newTab()
-				.setText(R.string.tab_cheapest)
+				.setCustomView(
+								getTabHeaderView(R.string.tab_cheapest,
+										R.drawable.ic_action_dollar_sign))
 				.setTabListener(
 						new TabListener<CheapestFragment>(
 								CheapestFragment.class)));
@@ -107,6 +117,13 @@ public class ResultListActivity extends Activity implements
 			getFragmentManager().beginTransaction()
 					.add(executableFragment, EXEC_TAG).commit();
 		}
+	}
+
+	private View getTabHeaderView(final int text, final int drawable) {
+		View v = getLayoutInflater().inflate(R.layout.tab_header, null);
+		((ImageView) (v.findViewById(R.id.tabIcon))).setImageResource(drawable);
+		((TextView) (v.findViewById(R.id.tabText))).setText(text);
+		return v;
 	}
 
 	@Override

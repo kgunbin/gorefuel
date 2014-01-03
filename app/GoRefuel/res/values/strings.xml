@@ -49,7 +49,7 @@
     <string name="tab_favorites">Favorites</string>
     <string name="tab_recommended">Recommended</string>
     <string name="nothing">No data found. Try changing settings</string>
-    
-    <string name="copyright">This app is provided "as-is" without any warranty\n&#xa9; Konstantin Gunbin kgunbin@outlook.com\nFeel free to send your suggestions\nThe data is sourced from www.fuelwatch.wa.gov.au</string>
+    <string name="copyright">This app is provided "as-is" without any warranty\n&#xa9; Konstantin Gunbin kgunbin@outlook.com\nFeel free to send your suggestions\nThe data is sourced from www.fuelwatch.wa.gov.au\nAll trademarks, servicemarks, registered trademarks, and registered servicemarks are the property of their respective owners.</string>
+    <string name="about_dialog">About</string>
 
 </resources>

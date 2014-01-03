@@ -208,54 +208,62 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020015;
         public static final int common_signin_btn_text_pressed_dark=0x7f020016;
         public static final int common_signin_btn_text_pressed_light=0x7f020017;
-        public static final int ic_action_forward=0x7f020018;
-        public static final int ic_action_map=0x7f020019;
-        public static final int ic_action_search=0x7f02001a;
-        public static final int ic_action_settings=0x7f02001b;
-        public static final int ic_ampol=0x7f02001c;
-        public static final int ic_betterchoice=0x7f02001d;
-        public static final int ic_boc=0x7f02001e;
-        public static final int ic_bp=0x7f02001f;
-        public static final int ic_caltex=0x7f020020;
-        public static final int ic_coles_express=0x7f020021;
-        public static final int ic_gull=0x7f020022;
-        public static final int ic_kleenheat=0x7f020023;
-        public static final int ic_launcher=0x7f020024;
-        public static final int ic_liberty=0x7f020025;
-        public static final int ic_other=0x7f020026;
-        public static final int ic_plusone_medium_off_client=0x7f020027;
-        public static final int ic_plusone_small_off_client=0x7f020028;
-        public static final int ic_plusone_standard_off_client=0x7f020029;
-        public static final int ic_plusone_tall_off_client=0x7f02002a;
-        public static final int ic_shell=0x7f02002b;
-        public static final int ic_united=0x7f02002c;
+        public static final int ic_action_dollar_sign=0x7f020018;
+        public static final int ic_action_favorite=0x7f020019;
+        public static final int ic_action_forward=0x7f02001a;
+        public static final int ic_action_good=0x7f02001b;
+        public static final int ic_action_important=0x7f02001c;
+        public static final int ic_action_map=0x7f02001d;
+        public static final int ic_action_place=0x7f02001e;
+        public static final int ic_action_search=0x7f02001f;
+        public static final int ic_action_settings=0x7f020020;
+        public static final int ic_ampol=0x7f020021;
+        public static final int ic_betterchoice=0x7f020022;
+        public static final int ic_boc=0x7f020023;
+        public static final int ic_bp=0x7f020024;
+        public static final int ic_caltex=0x7f020025;
+        public static final int ic_coles_express=0x7f020026;
+        public static final int ic_gull=0x7f020027;
+        public static final int ic_kleenheat=0x7f020028;
+        public static final int ic_launcher=0x7f020029;
+        public static final int ic_liberty=0x7f02002a;
+        public static final int ic_other=0x7f02002b;
+        public static final int ic_plusone_medium_off_client=0x7f02002c;
+        public static final int ic_plusone_small_off_client=0x7f02002d;
+        public static final int ic_plusone_standard_off_client=0x7f02002e;
+        public static final int ic_plusone_tall_off_client=0x7f02002f;
+        public static final int ic_shell=0x7f020030;
+        public static final int ic_united=0x7f020031;
     }
     public static final class id {
-        public static final int action_map=0x7f060017;
-        public static final int action_search=0x7f060016;
-        public static final int action_settings=0x7f060018;
-        public static final int distanceBoundary=0x7f06000c;
-        public static final int favShop=0x7f06000f;
+        public static final int action_map=0x7f06001a;
+        public static final int action_search=0x7f060019;
+        public static final int action_settings=0x7f06001b;
+        public static final int distanceBoundary=0x7f06000d;
+        public static final int favShop=0x7f060010;
         public static final int foundNothing=0x7f060006;
+        public static final int fragment_about=0x7f06000b;
         public static final int fragment_fuel_pref=0x7f060009;
         public static final int fragment_location_pref=0x7f06000a;
         public static final int hybrid=0x7f060004;
-        public static final int icon=0x7f06000e;
-        public static final int information=0x7f06000d;
-        public static final int ivInfoWindowMain=0x7f060013;
-        public static final int mainSelection=0x7f06000b;
+        public static final int icon=0x7f06000f;
+        public static final int information=0x7f06000e;
+        public static final int ivInfoWindowMain=0x7f060016;
+        public static final int mainSelection=0x7f06000c;
         public static final int map=0x7f060007;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int progressBar1=0x7f060005;
         public static final int satellite=0x7f060002;
-        public static final int shopAddress=0x7f060012;
+        public static final int shopAddress=0x7f060013;
         public static final int shopListView=0x7f060008;
-        public static final int shopPrice=0x7f060010;
-        public static final int shopTradeName=0x7f060011;
+        public static final int shopPrice=0x7f060011;
+        public static final int shopTradeName=0x7f060012;
+        public static final int tabIcon=0x7f060014;
+        public static final int tabText=0x7f060015;
         public static final int terrain=0x7f060003;
-        public static final int txtInfoWindowDetails=0x7f060015;
-        public static final int txtInfoWindowTitle=0x7f060014;
+        public static final int txtInfoWindowDetails=0x7f060018;
+        public static final int txtInfoWindowTitle=0x7f060017;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;
@@ -269,8 +277,9 @@ containing a value of this type.
         public static final int mainitem=0x7f030005;
         public static final int shopgroupitem=0x7f030006;
         public static final int shopitem=0x7f030007;
-        public static final int view_mapmarker=0x7f030008;
-        public static final int view_nothing=0x7f030009;
+        public static final int tab_header=0x7f030008;
+        public static final int view_mapmarker=0x7f030009;
+        public static final int view_nothing=0x7f03000a;
     }
     public static final class menu {
         public static final int actionbar=0x7f0c0000;
@@ -278,6 +287,7 @@ containing a value of this type.
         public static final int settings=0x7f0c0002;
     }
     public static final class string {
+        public static final int about_dialog=0x7f070035;
         public static final int action_search=0x7f07001f;
         public static final int action_settings=0x7f07001e;
         public static final int address=0x7f07002b;
@@ -430,8 +440,9 @@ containing a value of this type.
         public static final int GoButton=0x7f0b0002;
     }
     public static final class xml {
-        public static final int pref_fueltype=0x7f040000;
-        public static final int pref_region=0x7f040001;
+        public static final int pref_about=0x7f040000;
+        public static final int pref_fueltype=0x7f040001;
+        public static final int pref_region=0x7f040002;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.
