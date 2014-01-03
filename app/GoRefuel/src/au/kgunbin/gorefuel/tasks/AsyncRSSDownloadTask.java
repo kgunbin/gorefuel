@@ -3,9 +3,9 @@ package au.kgunbin.gorefuel.tasks;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Collections;
 import java.util.List;
 
+import android.accounts.NetworkErrorException;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import au.kgunbin.gorefuel.domain.Shop;
@@ -20,7 +20,9 @@ public class AsyncRSSDownloadTask extends
 			throws AbstractSynchronizedAsyncTask.CompletionException {
 
 		if (!isNetworkAvailable())
-			return Collections.emptyList();
+			throw new AbstractSynchronizedAsyncTask.CompletionException(
+					new NetworkErrorException());
+		
 		StringBuilder urlStr = new StringBuilder(Constants.URL).append(
 				"Product=").append(params[1]);
 		if (!params[0].trim().isEmpty())

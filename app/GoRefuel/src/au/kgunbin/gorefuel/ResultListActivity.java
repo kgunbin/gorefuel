@@ -46,7 +46,8 @@ public class ResultListActivity extends Activity implements
 		@Override
 		public void onSharedPreferenceChanged(
 				SharedPreferences sharedPreferences, String key) {
-			if (Constants.FUEL_TYPE.equals(key) || Constants.REGION.equals(key))
+			if (Constants.FUEL_TYPE.equals(key) || Constants.REGION.equals(key)
+					|| Constants.REGION_AUTO.equals(key))
 				GoRefuelApplication.reset();
 		}
 	};
@@ -148,7 +149,9 @@ public class ResultListActivity extends Activity implements
 				getResources().getString(
 						R.string.title_activity_display_message),
 				Preferences.getLabel(Constants.FUEL_TYPE),
-				Preferences.getLabel(Constants.REGION)));
+				prefs.getBoolean(Constants.REGION_AUTO, false) ? Preferences
+						.getLabel(Constants.REGION) : getResources().getString(
+						R.string.region_auto)));
 
 		if (!GoRefuelApplication.isListSet()) {
 			getFragmentManager().beginTransaction()
@@ -166,9 +169,8 @@ public class ResultListActivity extends Activity implements
 	@Override
 	protected void onStop() {
 		prefs.edit()
-			  .putStringSet(Constants.FAVORITES,
-						GoRefuelApplication.getFavorites())
-			  .commit();
+				.putStringSet(Constants.FAVORITES,
+						GoRefuelApplication.getFavorites()).commit();
 		super.onStop();
 	}
 

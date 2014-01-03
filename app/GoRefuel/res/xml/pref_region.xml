@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-  
-        <ListPreference
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:key="au.kgunbin.gorefuel.REGION"
+
+    <CheckBoxPreference
+        android:key="au.kgunbin.gorefuel.REGION_AUTO"
+        android:summaryOff="@string/region_auto"
+        android:summaryOn="@string/region_manual"
+        android:title="@string/region_mode" />
+
+    <ListPreference
         android:defaultValue="@string/regions_default"
+        android:dependency="au.kgunbin.gorefuel.REGION_AUTO"
         android:dialogTitle="@string/region_dialog"
         android:entries="@array/regions"
         android:entryValues="@array/regions_values"
-        android:title="@string/region_title"  android:summary="%s" />
+        android:key="au.kgunbin.gorefuel.REGION"
+        android:summary="%s"
+        android:title="@string/region_title" />
 
 </PreferenceScreen>

@@ -9,10 +9,12 @@ package au.kgunbin.gorefuel;
 
 public final class R {
     public static final class array {
-        public static final int distance_options=0x7f0a0002;
-        public static final int fuel_types=0x7f0a0003;
-        public static final int fuel_types_values=0x7f0a0004;
+        public static final int distance_options=0x7f0a0004;
+        public static final int fuel_types=0x7f0a0005;
+        public static final int fuel_types_values=0x7f0a0006;
         public static final int regions=0x7f0a0000;
+        public static final int regions_lat=0x7f0a0002;
+        public static final int regions_lon=0x7f0a0003;
         public static final int regions_values=0x7f0a0001;
     }
     public static final class attr {
@@ -274,11 +276,12 @@ containing a value of this type.
         public static final int activity_postlist=0x7f030002;
         public static final int activity_settings=0x7f030003;
         public static final int fragment_favorites=0x7f030004;
-        public static final int mainitem=0x7f030005;
-        public static final int shopgroupitem=0x7f030006;
-        public static final int shopitem=0x7f030007;
-        public static final int view_mapmarker=0x7f030008;
-        public static final int view_nothing=0x7f030009;
+        public static final int fragment_recommended=0x7f030005;
+        public static final int mainitem=0x7f030006;
+        public static final int shopgroupitem=0x7f030007;
+        public static final int shopitem=0x7f030008;
+        public static final int view_mapmarker=0x7f030009;
+        public static final int view_nothing=0x7f03000a;
     }
     public static final class menu {
         public static final int actionbar=0x7f0c0000;
@@ -286,11 +289,11 @@ containing a value of this type.
         public static final int settings=0x7f0c0002;
     }
     public static final class string {
-        public static final int about_dialog=0x7f070036;
-        public static final int action_search=0x7f07001f;
-        public static final int action_settings=0x7f07001e;
-        public static final int address=0x7f07002b;
-        public static final int app_name=0x7f07001d;
+        public static final int about_dialog=0x7f07003a;
+        public static final int action_search=0x7f070022;
+        public static final int action_settings=0x7f070021;
+        public static final int address=0x7f07002e;
+        public static final int app_name=0x7f070020;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -314,7 +317,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f070014;
-        public static final int cheaper_than=0x7f070025;
+        public static final int cheaper_than=0x7f070028;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -386,30 +389,34 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f070013;
-        public static final int copyright=0x7f070035;
-        public static final int error_network=0x7f070034;
-        public static final int fuel_type_dialog=0x7f07002d;
-        public static final int fuel_type_title=0x7f07002e;
-        public static final int fuel_types_default=0x7f07002c;
-        public static final int info_group=0x7f070027;
-        public static final int info_price=0x7f070028;
-        public static final int less_than=0x7f070024;
-        public static final int nothing=0x7f070033;
-        public static final int price=0x7f07002a;
+        public static final int copyright=0x7f070039;
+        public static final int error_network=0x7f070038;
+        public static final int fuel_type_dialog=0x7f070030;
+        public static final int fuel_type_title=0x7f070031;
+        public static final int fuel_types_default=0x7f07002f;
+        public static final int info_group=0x7f07002a;
+        public static final int info_price=0x7f07002b;
+        public static final int less_than=0x7f070027;
+        public static final int no_favorites=0x7f070037;
+        public static final int nothing=0x7f070036;
+        public static final int price=0x7f07002d;
+        public static final int region_auto=0x7f07001d;
         public static final int region_dialog=0x7f07001b;
+        public static final int region_manual=0x7f07001e;
+        public static final int region_mode=0x7f07001f;
         public static final int region_title=0x7f07001c;
         public static final int regions_default=0x7f07001a;
-        public static final int showOnMap=0x7f070023;
-        public static final int show_all=0x7f070026;
-        public static final int tab_cheapest=0x7f07002f;
-        public static final int tab_favorites=0x7f070031;
-        public static final int tab_nearest=0x7f070030;
-        public static final int tab_recommended=0x7f070032;
-        public static final int tap_to_go=0x7f070029;
-        public static final int title_activity_display_message=0x7f070020;
-        public static final int title_activity_map=0x7f070021;
-        public static final int title_activity_settings=0x7f070022;
-        public static final int try_again=0x7f070037;
+        public static final int showOnMap=0x7f070026;
+        public static final int show_all=0x7f070029;
+        public static final int tab_cheapest=0x7f070032;
+        public static final int tab_favorites=0x7f070034;
+        public static final int tab_nearest=0x7f070033;
+        public static final int tab_recommended=0x7f070035;
+        public static final int tap_to_go=0x7f07002c;
+        public static final int title_activity_display_message=0x7f070023;
+        public static final int title_activity_map=0x7f070024;
+        public static final int title_activity_settings=0x7f070025;
+        public static final int try_again=0x7f07003b;
     }
     public static final class style {
         /** 

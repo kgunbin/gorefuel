@@ -1,21 +1,19 @@
 package au.kgunbin.gorefuel;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import android.app.Application;
 import android.location.Location;
 import au.kgunbin.gorefuel.domain.Shop;
+import au.kgunbin.gorefuel.util.Comparators;
 import au.kgunbin.gorefuel.util.Preferences;
 import au.kgunbin.gorefuel.util.Shops;
 
 public class GoRefuelApplication extends Application {
 
-	private List<Shop> shops = new ArrayList<Shop>();
+	private final Set<Shop> shops = new HashSet<Shop>();
 	private Location location;
 	private final Set<String> favorites = new HashSet<String>();
 	private List<Float> priceRange;
@@ -35,12 +33,18 @@ public class GoRefuelApplication extends Application {
 	}
 
 	public static List<Shop> getData() {
-		return instance.shops;
+		return new ArrayList<Shop>(instance.shops);
 	}
 
 	public static void storeData(List<Shop> list) {
-		instance.shops = list == null ? Collections.<Shop> emptyList()
-				: new ArrayList<Shop>(list);
+		if (list != null) {
+			android.util.Log.d("OLD_SIZE",
+					String.valueOf(instance.shops.size()));
+			android.util.Log.d("ADDING", String.valueOf(list.size()));
+			instance.shops.addAll(list);
+			android.util.Log.d("NEW_SIZE",
+					String.valueOf(instance.shops.size()));
+		}
 	}
 
 	public static void reset() {
@@ -94,18 +98,9 @@ public class GoRefuelApplication extends Application {
 	}
 
 	private void calculatePriceRange() {
-		List<Float> prices = new AbstractList<Float>() {
-			public Float get(int i) {
-				return (float) (shops.get(i).getPrice());
-			}
-
-			public int size() {
-				return shops.size();
-			}
-		};
-
-		final double cheap = Collections.min(prices), expensive = Collections
-				.max(prices) + .1f, step = (expensive - cheap) / 3.0;
+		final List<Shop> buf = Comparators.cheapestCopy(instance.shops);
+		final double cheap = buf.get(0).getPrice(), expensive = buf.get(
+				buf.size() - 1).getPrice() + .1f, step = (expensive - cheap) / 3.0;
 		priceRange = new ArrayList<Float>(3);
 
 		for (double price = cheap; price < expensive; price += step) {

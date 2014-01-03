@@ -218,7 +218,6 @@ public final class Shop implements Parcelable {
 		if (!(o instanceof Shop))
 			return false;
 		Shop s = (Shop) o;
-
 		return this.latitude == s.latitude && this.longitude == s.longitude
 				&& this.tradingName.equals(s.tradingName);
 	}

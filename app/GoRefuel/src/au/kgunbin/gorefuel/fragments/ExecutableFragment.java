@@ -1,6 +1,6 @@
 package au.kgunbin.gorefuel.fragments;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import android.app.Activity;
@@ -18,6 +18,7 @@ import au.kgunbin.gorefuel.tasks.AsyncLocationDetectTask;
 import au.kgunbin.gorefuel.tasks.AsyncRSSDownloadTask;
 import au.kgunbin.gorefuel.tasks.AsyncTaskCompletionListener;
 import au.kgunbin.gorefuel.util.Constants;
+import au.kgunbin.gorefuel.util.Preferences;
 
 public class ExecutableFragment extends Fragment {
 	private AsyncFragmentListener completionListener;
@@ -43,46 +44,59 @@ public class ExecutableFragment extends Fragment {
 	}
 
 	public void requestData() {
-		@SuppressWarnings("rawtypes")
-		List<AbstractSynchronizedAsyncTask> tasks = new ArrayList<AbstractSynchronizedAsyncTask>(
-				2);
-		String[] params = new String[2];
 
-		tasks.add(AbstractSynchronizedAsyncTask.getTask(getActivity(),
+		AbstractSynchronizedAsyncTask.getTask(getActivity(),
 				AsyncLocationDetectTask.class,
-				new AbstractAsyncTaskCompletionListener<Location>() {
+				new AsyncTaskCompletionListener<Location>() {
 					@Override
 					public void onComplete(Location result) {
 						GoRefuelApplication.setLocation(result);
-						super.onComplete(result);
+						requestShops();
 					}
-				}));
+
+					@Override
+					public void onError(Exception exception) {
+						// Do nothing						
+					}
+				}).execute(new String[] {});
+	}
+
+	private void requestShops() {
 
 		if (!GoRefuelApplication.isListSet()) {
 			SharedPreferences prefs = PreferenceManager
 					.getDefaultSharedPreferences(getActivity());
-			params[0] = prefs.getString(Constants.REGION, "");
-			params[1] = prefs.getString(Constants.FUEL_TYPE, "1");
+			final boolean autoRegion = !prefs.getBoolean(Constants.REGION_AUTO,
+					false);
+			String fuelType = prefs.getString(Constants.FUEL_TYPE, "1");
 
-			tasks.add(AbstractSynchronizedAsyncTask.getTask(getActivity(),
-					AsyncRSSDownloadTask.class,
-					new AbstractAsyncTaskCompletionListener<List<Shop>>() {
-						@Override
-						public void onComplete(List<Shop> result) {
-							GoRefuelApplication.storeData(result);
-							super.onComplete(result);
-						}
+			List<String> regions;
+			if (autoRegion) {
+				regions = Preferences.calculateRegions(GoRefuelApplication.getLocation());
+			} else {
+				regions = Arrays.asList(prefs.getString(Constants.REGION, ""));
+			}
+			latch = regions.size();
+			for (String region : regions) {
+				android.util.Log.d(Constants.REGION, region);
+				AbstractSynchronizedAsyncTask.getTask(getActivity(),
+						AsyncRSSDownloadTask.class,
+						new AbstractAsyncTaskCompletionListener<List<Shop>>() {
+							@Override
+							public void onComplete(List<Shop> result) {								
+								GoRefuelApplication.storeData(result);
+								super.onComplete(result);
+							}
 
-						@Override
-						public void onError(Exception exception) {
-							GoRefuelApplication.setNetworkError();
-							super.onError(exception);
-						}
-					}));
+							@Override
+							public void onError(Exception exception) {
+								GoRefuelApplication.setNetworkError();
+								super.onError(exception);
+							}
+						}).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
+						region, fuelType);
+			}
 		}
-		latch = tasks.size();
-		for (AsyncTask<String, ?, ?> task : tasks)
-			task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
 	}
 
 	private void onTaskComplete() {

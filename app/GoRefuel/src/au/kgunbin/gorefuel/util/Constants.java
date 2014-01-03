@@ -9,6 +9,7 @@ public final class Constants {
 	public static final String DATA = "au.kgunbin.gorefuel.DATA";
 	public final static String URL = "http://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?";
 	public final static String FAVORITES = "au.kgunbin.gorefuel.FAVORITES";
+	public final static String REGION_AUTO = "au.kgunbin.gorefuel.REGION_AUTO";
 	
 	public static final int INTENT_FETCH = 1;
 	public static final int INTENT_REQUEST_LOCATION = 2;

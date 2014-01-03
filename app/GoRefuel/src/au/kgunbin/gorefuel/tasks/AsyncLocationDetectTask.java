@@ -21,6 +21,7 @@ public class AsyncLocationDetectTask extends
 			location = new Location("Perth Centre");
 			location.setLatitude(-31.952854d);
 			location.setLongitude(115.857561d);
+
 		}
 		return location;
 	}
