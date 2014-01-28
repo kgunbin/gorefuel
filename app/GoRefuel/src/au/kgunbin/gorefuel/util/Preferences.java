@@ -14,6 +14,7 @@ import android.content.res.Resources;
 import android.location.Location;
 import android.preference.PreferenceManager;
 import au.kgunbin.gorefuel.R;
+import au.kgunbin.gorefuel.domain.Shop;
 
 public class Preferences {
 
@@ -23,6 +24,9 @@ public class Preferences {
 	private final String[] regionsLats;
 	private final String[] regionsLons;
 	private final String[] regionsCodes;
+	private final int consumption;
+	private final int volume;
+
 	private static Preferences instance;
 
 	private Preferences(final Context context) {
@@ -49,6 +53,10 @@ public class Preferences {
 		regionsLats = res.getStringArray(R.array.regions_lat);
 		regionsLons = res.getStringArray(R.array.regions_lon);
 		regionsCodes = res.getStringArray(R.array.regions_values);
+
+		consumption = Integer.valueOf(prefs.getString(
+				Constants.FUEL_CONSUMPTION, "15"));
+		volume = Integer.valueOf(prefs.getString(Constants.FUEL_VOLUME, "30"));
 	}
 
 	private String getLabelInternal(final String settingCode) {
@@ -76,6 +84,12 @@ public class Preferences {
 			throw new IllegalStateException(
 					"Preferences.init() was never called");
 		return instance.calculateRegionsInternal(location);
+	}
+
+	public static double effective(final Shop shop) {
+		return (instance.volume + (shop.getDistance()
+				* (double) instance.consumption / 100))
+				* shop.getPrice();
 	}
 
 	private List<String> calculateRegionsInternal(final Location location) {

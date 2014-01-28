@@ -22,6 +22,12 @@
         android:layout_height="wrap_content" />
 
     <fragment
+        android:id="@+id/fragment_car_pref"
+        android:name="au.kgunbin.gorefuel.fragments.CarPreferenceFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <fragment
         android:id="@+id/fragment_about"
         android:name="au.kgunbin.gorefuel.fragments.AboutFragment"
         android:layout_width="match_parent"

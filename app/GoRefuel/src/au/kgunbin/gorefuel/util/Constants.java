@@ -10,9 +10,12 @@ public final class Constants {
 	public final static String URL = "http://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?";
 	public final static String FAVORITES = "au.kgunbin.gorefuel.FAVORITES";
 	public final static String REGION_AUTO = "au.kgunbin.gorefuel.REGION_AUTO";
-	
+	public final static String FUEL_CONSUMPTION = "au.kgunbin.gorefuel.CONSUMPTION";
+	public final static String FUEL_VOLUME = "au.kgunbin.gorefuel.VOLUME";
+
 	public static final int INTENT_FETCH = 1;
 	public static final int INTENT_REQUEST_LOCATION = 2;
-	
-	private Constants() {}
+
+	private Constants() {
+	}
 }

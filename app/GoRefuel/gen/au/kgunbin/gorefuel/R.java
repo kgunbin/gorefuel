@@ -239,33 +239,35 @@ containing a value of this type.
         public static final int ic_united=0x7f020032;
     }
     public static final class id {
-        public static final int action_map=0x7f060019;
-        public static final int action_settings=0x7f06001a;
-        public static final int distanceBoundary=0x7f06000e;
-        public static final int favShop=0x7f060011;
+        public static final int action_map=0x7f06001b;
+        public static final int action_settings=0x7f06001c;
+        public static final int distanceBoundary=0x7f06000f;
+        public static final int favShop=0x7f060012;
         public static final int foundNothing=0x7f060006;
-        public static final int fragment_about=0x7f06000c;
+        public static final int fragment_about=0x7f06000d;
+        public static final int fragment_car_pref=0x7f06000c;
         public static final int fragment_fuel_pref=0x7f06000a;
         public static final int fragment_location_pref=0x7f06000b;
         public static final int hybrid=0x7f060004;
-        public static final int icon=0x7f060010;
-        public static final int information=0x7f06000f;
-        public static final int ivInfoWindowMain=0x7f060015;
-        public static final int mainSelection=0x7f06000d;
+        public static final int icon=0x7f060011;
+        public static final int information=0x7f060010;
+        public static final int ivInfoWindowMain=0x7f060017;
+        public static final int mainSelection=0x7f06000e;
         public static final int map=0x7f060008;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int progressBar1=0x7f060005;
         public static final int retry=0x7f060007;
         public static final int satellite=0x7f060002;
-        public static final int shopAddress=0x7f060014;
+        public static final int shopAddress=0x7f060016;
         public static final int shopListView=0x7f060009;
-        public static final int shopPrice=0x7f060012;
-        public static final int shopTradeName=0x7f060013;
+        public static final int shopPrice=0x7f060013;
+        public static final int shopTradeName=0x7f060015;
         public static final int terrain=0x7f060003;
-        public static final int txtInfoWindowDetails=0x7f060018;
-        public static final int txtInfoWindowPrice=0x7f060016;
-        public static final int txtInfoWindowTitle=0x7f060017;
+        public static final int toSpend=0x7f060014;
+        public static final int txtInfoWindowDetails=0x7f06001a;
+        public static final int txtInfoWindowPrice=0x7f060018;
+        public static final int txtInfoWindowTitle=0x7f060019;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;
@@ -389,6 +391,9 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f070013;
+        public static final int consumption_dialog_message=0x7f07003c;
+        public static final int consumption_dialog_summary=0x7f07003e;
+        public static final int consumption_dialog_title=0x7f07003d;
         public static final int copyright=0x7f070039;
         public static final int error_network=0x7f070038;
         public static final int fuel_type_dialog=0x7f070030;
@@ -417,6 +422,9 @@ containing a value of this type.
         public static final int title_activity_map=0x7f070024;
         public static final int title_activity_settings=0x7f070025;
         public static final int try_again=0x7f07003b;
+        public static final int volume_dialog_message=0x7f07003f;
+        public static final int volume_dialog_summary=0x7f070041;
+        public static final int volume_dialog_title=0x7f070040;
     }
     public static final class style {
         /** 
@@ -451,8 +459,9 @@ containing a value of this type.
     }
     public static final class xml {
         public static final int pref_about=0x7f040000;
-        public static final int pref_fueltype=0x7f040001;
-        public static final int pref_region=0x7f040002;
+        public static final int pref_car=0x7f040001;
+        public static final int pref_fueltype=0x7f040002;
+        public static final int pref_region=0x7f040003;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.

@@ -38,12 +38,7 @@ public class GoRefuelApplication extends Application {
 
 	public static void storeData(List<Shop> list) {
 		if (list != null) {
-			android.util.Log.d("OLD_SIZE",
-					String.valueOf(instance.shops.size()));
-			android.util.Log.d("ADDING", String.valueOf(list.size()));
 			instance.shops.addAll(list);
-			android.util.Log.d("NEW_SIZE",
-					String.valueOf(instance.shops.size()));
 		}
 	}
 

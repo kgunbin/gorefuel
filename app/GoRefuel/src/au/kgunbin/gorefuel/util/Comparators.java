@@ -33,7 +33,8 @@ public abstract class Comparators {
 	public final static Comparator<Shop> RECOMMENDED = new Comparator<Shop>() {
 		@Override
 		public int compare(Shop arg0, Shop arg1) {
-			return Double.compare(Shops.effective(arg0), Shops.effective(arg1));
+			return Double.compare(Preferences.effective(arg0),
+					Preferences.effective(arg1));
 		}
 	};
 

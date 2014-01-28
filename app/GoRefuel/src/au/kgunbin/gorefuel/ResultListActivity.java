@@ -3,6 +3,10 @@ package au.kgunbin.gorefuel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.ActionBar;
@@ -115,6 +119,15 @@ public class ResultListActivity extends Activity implements
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.actionbar, menu);
 		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		menu.getItem(0)
+				.setEnabled(
+						GooglePlayServicesUtil
+								.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS);
+		return true;
 	}
 
 	@Override

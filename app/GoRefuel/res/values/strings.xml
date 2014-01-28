@@ -53,5 +53,12 @@
     <string name="copyright">&#xa9; Konstantin Gunbin kgunbin@outlook.com\nFeel free to send your suggestions\n\nThe data is sourced from www.fuelwatch.wa.gov.au\n\nAll trademarks, servicemarks, registered trademarks, and registered servicemarks are the property of their respective owners.</string>
     <string name="about_dialog">About</string>
     <string name="try_again">Retry</string>
+    
+    <string name="consumption_dialog_message">What is your car\'s average consumption ,litres per 100 Km\nNote: this will take effect on application restart</string>
+    <string name="consumption_dialog_title">Fuel consumption</string>
+    <string name="consumption_dialog_summary">Average consumption</string>
+    <string name="volume_dialog_message">How much fuel are you going to buy\nNote: this will take effect on application restart</string>
+    <string name="volume_dialog_title">Refuel volume</string>
+    <string name="volume_dialog_summary">Litres of fuel to buy</string>
 
 </resources>

@@ -43,8 +43,4 @@ public final class Shops {
 		}
 		return sort;
 	}
-
-	public static double effective(final Shop shop) {
-		return (30.0 + Math.max(shop.getDistance(), 5f) / 15.0) * shop.getPrice();
-	}
 }
