@@ -2,7 +2,6 @@ package au.kgunbin.gorefuel.fragments;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import au.kgunbin.gorefuel.adapter.ShopAdapter;
@@ -31,11 +30,5 @@ public abstract class ShopListFragment extends ListFragment implements
 	@Override
 	public final List<Shop> nowVisible() {
 		return content;
-	}
-
-	public final void update() {
-		content = getContent();
-		if (adapter != null)
-			adapter.notifyDataSetChanged();
 	}
 }

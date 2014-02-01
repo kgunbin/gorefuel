@@ -288,10 +288,5 @@ public class ResultListActivity extends Activity implements
 		public Collection<Shop> nowVisible() {
 			return Collections.emptyList();
 		}
-
-		@Override
-		public void update() {
-
-		}
 	}
 }
