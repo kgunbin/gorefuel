@@ -60,6 +60,8 @@ public class ResultListActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		setContentView(R.layout.activity_resultlist);
+
 		PreferenceManager.setDefaultValues(this, R.xml.pref_fueltype, false);
 		PreferenceManager.setDefaultValues(this, R.xml.pref_region, false);
 
@@ -167,8 +169,6 @@ public class ResultListActivity extends Activity implements
 						R.string.region_auto)));
 
 		if (!GoRefuelApplication.isListSet()) {
-			getFragmentManager().beginTransaction()
-					.replace(android.R.id.content, defaultFragment).commit();
 			if (findViewById(R.id.progressBar1) != null)
 				findViewById(R.id.progressBar1).setVisibility(View.VISIBLE);
 			if (findViewById(R.id.retry) != null)
@@ -244,7 +244,7 @@ public class ResultListActivity extends Activity implements
 				// If not, instantiate and add it to the activity
 				myFragment = Fragment.instantiate(ResultListActivity.this, tag);
 
-				ft.replace(android.R.id.content, myFragment, tag);
+				ft.replace(R.id.activity_resultlist_fragment, myFragment, tag);
 			} else {
 				// If it exists, simply attach it in order to show it
 				ft.attach(myFragment);
@@ -270,6 +270,7 @@ public class ResultListActivity extends Activity implements
 
 		@Override
 		public void onTabReselected(Tab tab, FragmentTransaction ft) {
+			onTabUnselected(tab, ft);
 			onTabSelected(tab, ft);
 		}
 	}
@@ -286,6 +287,11 @@ public class ResultListActivity extends Activity implements
 		@Override
 		public Collection<Shop> nowVisible() {
 			return Collections.emptyList();
+		}
+
+		@Override
+		public void update() {
+
 		}
 	}
 }

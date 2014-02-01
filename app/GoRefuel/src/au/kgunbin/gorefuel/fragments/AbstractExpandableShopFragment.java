@@ -39,4 +39,8 @@ public abstract class AbstractExpandableShopFragment extends Fragment implements
 
 	protected abstract AbstractExpandableShopAdapter getAdapter(
 			Activity activity);
+	
+	public final void update() {
+		adapter.notifyDataSetChanged();
+	}
 }

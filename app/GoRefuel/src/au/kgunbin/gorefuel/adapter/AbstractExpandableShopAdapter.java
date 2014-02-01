@@ -14,10 +14,9 @@ import android.widget.TextView;
 import au.kgunbin.gorefuel.GoRefuelApplication;
 import au.kgunbin.gorefuel.R;
 import au.kgunbin.gorefuel.domain.Shop;
-import au.kgunbin.gorefuel.fragments.ResultFragmentListener;
 
 public abstract class AbstractExpandableShopAdapter extends
-		BaseExpandableListAdapter implements ResultFragmentListener {
+		BaseExpandableListAdapter {
 
 	private final SparseArray<List<Shop>> shops;
 	private final List<String> groups;
@@ -141,8 +140,7 @@ public abstract class AbstractExpandableShopAdapter extends
 		return activity;
 	}
 
-	@Override
-	public Set<Shop> nowVisible() {
+	public final Set<Shop> nowVisible() {
 		return nowVisible;
 	}
 
