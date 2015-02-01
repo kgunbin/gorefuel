@@ -16,7 +16,7 @@ public enum Brand {
 			R.drawable.ic_kleenheat), KWIKFUEL("Kwikfuel", R.drawable.ic_other), LIBERTY(
 			"Liberty", R.drawable.ic_liberty), PEAK("Peak", R.drawable.ic_other), SHELL(
 			"Shell", R.drawable.ic_shell), UNITED("United",
-			R.drawable.ic_united), WESCO("Wesco", R.drawable.ic_other);
+			R.drawable.ic_united), WESCO("Wesco", R.drawable.ic_other), PUMA("Puma Energy", R.drawable.ic_puma);
 
 	private static Map<String, Brand> lookup = new HashMap<String, Brand>(
 			Brand.values().length);

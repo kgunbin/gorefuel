@@ -235,8 +235,9 @@ containing a value of this type.
         public static final int ic_plusone_small_off_client=0x7f02002e;
         public static final int ic_plusone_standard_off_client=0x7f02002f;
         public static final int ic_plusone_tall_off_client=0x7f020030;
-        public static final int ic_shell=0x7f020031;
-        public static final int ic_united=0x7f020032;
+        public static final int ic_puma=0x7f020031;
+        public static final int ic_shell=0x7f020032;
+        public static final int ic_united=0x7f020033;
     }
     public static final class id {
         public static final int action_map=0x7f06001b;

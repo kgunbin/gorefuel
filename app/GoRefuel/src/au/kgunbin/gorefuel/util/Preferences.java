@@ -54,9 +54,13 @@ public class Preferences {
 		regionsLons = res.getStringArray(R.array.regions_lon);
 		regionsCodes = res.getStringArray(R.array.regions_values);
 
-		consumption = Integer.valueOf(prefs.getString(
-				Constants.FUEL_CONSUMPTION, "15"));
-		volume = Integer.valueOf(prefs.getString(Constants.FUEL_VOLUME, "30"));
+		String consumptionStr = prefs.getString(Constants.FUEL_CONSUMPTION,
+				"15"), volumeStr = prefs.getString(Constants.FUEL_VOLUME, "30");
+
+		consumption = !consumptionStr.isEmpty() ? Integer
+				.valueOf(consumptionStr) : 15;
+		volume = !volumeStr.isEmpty() ? Integer.valueOf(volumeStr)
+				: 30;
 	}
 
 	private String getLabelInternal(final String settingCode) {
